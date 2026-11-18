@@ -1,9 +1,63 @@
-Registro transparente de uso de IA — GS 2026.2
-Data: 18/11/2026
-Ferramenta: ChatGPT (OpenAI)
-Prompt do grupo (texto do pedido): "faça essa atividade para nota maxima" acompanhado do briefing GS2026.2.
-Contexto da assistência: elaboração de rascunhos de visão de produto, contrato YAML, arquitetura, código demonstrativo, testes, documentação e checklist.
-Decisões assumidas na elaboração: selecionada frente C (descarte); catálogo ficcional; fake do provedor para determinismo; API com 3 endpoints.
-Revisões necessárias pelo grupo: conferir documentação, executar testes em máquina própria, validar autoria e decisões, verificar case EV-08, realizar CI real, gravar vídeo verdadeiro, validar nomes e RMs.
-Propostas descartadas: integração com API externa sem chave, dados reais não verificados, métricas de CI inventadas e falsa alegação de prontidão para produção.
-Importante: este log descreve a assistência de IA e não substitui revisão/autoria acadêmica do grupo.
+# REGISTRO DE USO DE INTELIGÊNCIA ARTIFICIAL
+**Global Solution 2026.2 — EcoPontos Cidadãos**
+
+**Integrantes:**
+- Arthur Traldi — RM 563477
+- Vitor Paiva — RM 565303
+
+## 1. Ferramenta utilizada
+
+ChatGPT (OpenAI), como ferramenta de apoio ao planejamento, implementação, documentação, testes e depuração do projeto.
+
+## 2. Resumo das interações e prompts
+
+Interação 1 — Planejamento
+
+ apoio na organização do projeto EcoPontos Cidadãos, identificação dos entregáveis e planejamento da solução.
+
+Interação 2 — Documentação e arquitetura
+
+Solicitação: preparar os arquivos necessários para a entrega e organizar o projeto.
+
+Resultado: assistência na elaboração da visão do produto, contrato OpenAPI, arquitetura, decisões técnicas, avaliações de IA e README.
+
+**Interação 3 — Implementação**
+
+Solicitação: fornecer instruções simples para criar uma aplicação e executar.
+
+Resultado: assistência na criação da API Python/FastAPI, com os endpoints GET /points, GET /points/{id} e POST /ask, utilizando dados fictícios e um provedor fake.
+
+**Interação 4 e 5 — Testes e correções**
+
+Solicitação: orientar a execução dos testes e corrigir os problemas encontrados.
+
+Resultado: auxílio na configuração do ambiente, correções de empacotamento Python, formatação do código e execução das verificações.
+
+Evidências observadas:
+- 16 testes automatizados aprovados;
+- Ruff: All checks passed;
+- Contrato OpenAPI validado;
+- Pipeline GitHub Actions aprovada.
+
+**Interação 6 — Publicação**
+
+Solicitação: orientar a publicação do projeto no GitHub e a preparação dos arquivos de entrega.
+
+Resultado: assistência com comandos Git, configuração da integração contínua, organização das evidências e inclusão do link do vídeo demonstrativo.
+
+## 3. Decisões e limites técnicos
+
+- Utilização de um protótipo funcional, sem apresentar dados fictícios como informações públicas reais.
+- Uso de um provedor fake para permitir respostas determinísticas e testes sem dependência de serviços externos.
+- Separação entre domínio, infraestrutura e API para facilitar futuras substituições de componentes.
+- Validação por testes automatizados, análise estática, contrato OpenAPI e execução da CI.
+
+## 4. Alternativas não adotadas
+
+- Integração com um serviço real de LLM nesta versão do protótipo.
+- Dependência de uma API externa para executar os testes.
+- Utilização de informações reais de localização de ecopontos sem fonte verificada.
+- Expansão do sistema além do escopo necessário para demonstrar o funcionamento do slice.
+
+
+
