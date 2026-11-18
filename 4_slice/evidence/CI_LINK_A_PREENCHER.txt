@@ -1,1 +1,4 @@
-PENDENTE: colocar URL real da execução GitHub Actions e screenshot verdadeiro após o push.
+GitHub Actions - CI aprovado:
+https://github.com/Trald1/GS2026-2-EcoPontos-Cidadaos/actions/runs/44414328339
+
+Evidencia: ci_verde.png
