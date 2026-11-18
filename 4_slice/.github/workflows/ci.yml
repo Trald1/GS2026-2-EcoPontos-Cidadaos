@@ -1,0 +1,23 @@
+name: CI EcoPontos
+on:
+  push:
+  pull_request:
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install
+        working-directory: 4_slice
+        run: python -m pip install -r requirements.txt
+      - name: OpenAPI validation
+        run: python -c "import yaml; from openapi_spec_validator import validate; validate(yaml.safe_load(open('2_contrato_api.yaml', encoding='utf-8')))"
+      - name: Ruff lint
+        working-directory: 4_slice
+        run: ruff check src tests
+      - name: Tests + coverage
+        working-directory: 4_slice
+        run: pytest --cov=src --cov-report=term-missing --cov-fail-under=80

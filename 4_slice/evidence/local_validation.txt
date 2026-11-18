@@ -1,0 +1,30 @@
+................                                                         [100%]
+=============================== warnings summary ===============================
+tests/test_contract.py::test_contract_response_matches_yaml
+tests/test_contract.py::test_contract_response_matches_yaml
+tests/test_contract.py::test_contract_response_matches_yaml
+tests/test_contract.py::test_contract_response_matches_yaml
+tests/test_contract.py::test_contract_response_matches_yaml
+  /mnt/data/GS2026_2_2CCPY_EcoPontos/4_slice/tests/test_contract.py:15: DeprecationWarning: jsonschema.RefResolver is deprecated as of v4.18.0, in favor of the https://github.com/python-jsonschema/referencing library, which provides more compliant referencing behavior as well as more flexible APIs for customization. A future release will remove RefResolver. Please file a feature request (on referencing) if you are missing an API for the kind of customization you need.
+    resolver = jsonschema.RefResolver.from_schema(spec)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.13.5-final-0 ________________
+
+Name                           Stmts   Miss  Cover   Missing
+------------------------------------------------------------
+src/__init__.py                    0      0   100%
+src/api/__init__.py                0      0   100%
+src/api/app.py                    43      1    98%   26
+src/domain/__init__.py             0      0   100%
+src/domain/models.py              10      0   100%
+src/domain/ports.py                4      0   100%
+src/domain/service.py             45      0   100%
+src/infra/__init__.py              0      0   100%
+src/infra/answer_provider.py       5      0   100%
+src/infra/repository.py            9      0   100%
+------------------------------------------------------------
+TOTAL                            116      1    99%
+Required test coverage of 80% reached. Total coverage: 99.14%
+16 passed, 5 warnings in 2.20s

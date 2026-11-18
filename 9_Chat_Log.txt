@@ -1,0 +1,9 @@
+Registro transparente de uso de IA — GS 2026.2
+Data: 18/11/2026
+Ferramenta: ChatGPT (OpenAI)
+Prompt do grupo (texto do pedido): "faça essa atividade para nota maxima" acompanhado do briefing GS2026.2.
+Contexto da assistência: elaboração de rascunhos de visão de produto, contrato YAML, arquitetura, código demonstrativo, testes, documentação e checklist.
+Decisões assumidas na elaboração: selecionada frente C (descarte); catálogo ficcional; fake do provedor para determinismo; API com 3 endpoints.
+Revisões necessárias pelo grupo: conferir documentação, executar testes em máquina própria, validar autoria e decisões, verificar case EV-08, realizar CI real, gravar vídeo verdadeiro, validar nomes e RMs.
+Propostas descartadas: integração com API externa sem chave, dados reais não verificados, métricas de CI inventadas e falsa alegação de prontidão para produção.
+Importante: este log descreve a assistência de IA e não substitui revisão/autoria acadêmica do grupo.

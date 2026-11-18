@@ -1,0 +1,1 @@
+PENDENTE: colocar URL real da execução GitHub Actions e screenshot verdadeiro após o push.

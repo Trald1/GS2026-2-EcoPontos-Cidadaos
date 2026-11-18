@@ -1,0 +1,147 @@
+openapi: 3.0.3
+info:
+  title: EcoPontos Cidadãos API
+  version: 1.0.0
+  description: API demonstrativa CitizenTech. Todos os endereços são fictícios.
+servers:
+  - url: http://localhost:8000
+paths:
+  /points:
+    get:
+      operationId: listPoints
+      summary: Lista pontos de coleta simulados
+      parameters:
+        - in: query
+          name: limit
+          required: false
+          schema: {type: integer, minimum: 1, maximum: 100, default: 10}
+        - in: query
+          name: offset
+          required: false
+          schema: {type: integer, minimum: 0, maximum: 10000, default: 0}
+        - in: query
+          name: material
+          required: false
+          schema: {type: string, enum: [papel, plastico, vidro, metal]}
+      responses:
+        '200':
+          description: Página de resultados
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/PointPage'}
+        '400': {$ref: '#/components/responses/BadRequest'}
+        '422': {$ref: '#/components/responses/Unprocessable'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /points/{id}:
+    get:
+      operationId: getPoint
+      summary: Obtém ponto pelo identificador
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: {type: string, minLength: 1, maxLength: 50}
+      responses:
+        '200':
+          description: Ponto encontrado
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Point'}
+        '400': {$ref: '#/components/responses/BadRequest'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '422': {$ref: '#/components/responses/Unprocessable'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /ask:
+    post:
+      operationId: ask
+      summary: Pergunta contextualizada em ponto específico
+      description: Perguntas fora de escopo retornam status refused; não aciona LLM externo no modo fake.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/AskRequest'}
+      responses:
+        '200':
+          description: Orientação baseada no cadastro ou recusa
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/AskResponse'}
+        '400': {$ref: '#/components/responses/BadRequest'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '422': {$ref: '#/components/responses/Unprocessable'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+components:
+  schemas:
+    Point:
+      type: object
+      additionalProperties: false
+      required: [id, name, address, materials, instructions, updated_at]
+      properties:
+        id: {type: string, minLength: 1}
+        name: {type: string}
+        address: {type: string, description: Endereço fictício para demonstração}
+        materials:
+          type: array
+          items: {type: string, enum: [papel, plastico, vidro, metal]}
+        instructions: {type: string}
+        updated_at: {type: string, format: date}
+    PointPage:
+      type: object
+      additionalProperties: false
+      required: [items, total, limit, offset]
+      properties:
+        items: {type: array, items: {$ref: '#/components/schemas/Point'}}
+        total: {type: integer, minimum: 0}
+        limit: {type: integer, minimum: 1, maximum: 100}
+        offset: {type: integer, minimum: 0}
+    AskRequest:
+      type: object
+      additionalProperties: false
+      required: [point_id, question]
+      properties:
+        point_id: {type: string, minLength: 1, maxLength: 50}
+        question: {type: string, minLength: 1, maxLength: 300}
+    AskResponse:
+      type: object
+      additionalProperties: false
+      required: [status, answer, source_point_id, provider]
+      properties:
+        status: {type: string, enum: [answered, refused]}
+        answer: {type: string}
+        source_point_id: {type: string}
+        provider: {type: string, enum: [fake]}
+    ErrorDetail:
+      type: object
+      additionalProperties: false
+      required: [code, message]
+      properties:
+        code: {type: string, enum: [BAD_REQUEST, NOT_FOUND, VALIDATION_ERROR, AI_UNAVAILABLE, SERVICE_UNAVAILABLE]}
+        message: {type: string}
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required: [error]
+      properties:
+        error: {$ref: '#/components/schemas/ErrorDetail'}
+  responses:
+    BadRequest:
+      description: Requisição semanticamente inválida
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/ErrorResponse'}
+    NotFound:
+      description: Identificador não encontrado
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/ErrorResponse'}
+    Unprocessable:
+      description: Falha de validação de esquema ou parâmetro
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/ErrorResponse'}
+    Unavailable:
+      description: Dependência de IA ou serviço indisponível
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/ErrorResponse'}

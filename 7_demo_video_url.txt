@@ -1,0 +1,3 @@
+PENDENTE — INSERIR URL REAL DO VÍDEO NÃO LISTADO (duração máxima de 3 minutos).
+O vídeo deve mostrar todos os integrantes, execução de pytest, API e CI real.
+Este arquivo é placeholder; não é evidência de gravação realizada.

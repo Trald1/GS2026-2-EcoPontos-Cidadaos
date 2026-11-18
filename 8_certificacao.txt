@@ -1,0 +1,22 @@
+GS 2026.2 — Engenharia de Software — Turma 2CCPY-2026
+Disciplina: Prompt and Artificial Intelligence
+Grupo: EcoPontos Cidadãos | Frente C | Modalidade: dupla
+Integrantes informados em tarefa anterior 
+Arthur Traldi — RM 563477
+Vitor Paiva — RM 565303
+
+Resumo para defesa (cola compacta):
+- API com GET /points (pagina e filtra), GET /points/{id} (404 padrão) e POST /ask.
+- YAML é fonte de verdade; testes comparam respostas ao schema.
+- Domínio depende somente de protocolos; FakeAnswerProvider é injetado; nenhuma rede em teste.
+- Guardrails de escopo e factualidade; 503 se provedor falha; EV-08 é lacuna documentada.
+- ADR-001 escolhe portas/adaptadores; ADR-002 escolhe catálogo estruturado; ADR-003 escolhe fake honesto.
+- p95, taxa 5xx, recusas e tokens são metas de monitoramento para produção, não medições reais.
+
+Links:
+Repositório GitHub: PENDENTE — URL REAL
+CI GitHub Actions: PENDENTE — URL REAL
+Vídeo não listado (até 3 min): PENDENTE — URL REAL
+
+Contribuições: PENDENTE — descrever as contribuições efetivamente realizadas por cada integrante.
+Confirmação de entendimento técnico / autoria: cada integrante deve revisar e ser capaz de explicar ADRs, testes e limites antes de entregar.
