@@ -1,22 +1,38 @@
-GS 2026.2 — Engenharia de Software — Turma 2CCPY-2026
+
+GLOBAL SOLUTION 2026.2 - CERTIFICACAO
+
+Projeto: EcoPontos Cidadaos
 Disciplina: Prompt and Artificial Intelligence
-Grupo: EcoPontos Cidadãos | Frente C | Modalidade: dupla
-Integrantes informados em tarefa anterior 
-Arthur Traldi — RM 563477
-Vitor Paiva — RM 565303
+Curso: Engenharia de Software
+Turma: 2CCPY-2026
+Modalidade: Dupla
 
-Resumo para defesa (cola compacta):
-- API com GET /points (pagina e filtra), GET /points/{id} (404 padrão) e POST /ask.
-- YAML é fonte de verdade; testes comparam respostas ao schema.
-- Domínio depende somente de protocolos; FakeAnswerProvider é injetado; nenhuma rede em teste.
-- Guardrails de escopo e factualidade; 503 se provedor falha; EV-08 é lacuna documentada.
-- ADR-001 escolhe portas/adaptadores; ADR-002 escolhe catálogo estruturado; ADR-003 escolhe fake honesto.
-- p95, taxa 5xx, recusas e tokens são metas de monitoramento para produção, não medições reais.
+INTEGRANTES
+Arthur Traldi - RM 563477
+Vitor Paiva - RM 565303
 
-Links:
-Repositório GitHub: PENDENTE — URL REAL
-CI GitHub Actions: PENDENTE — URL REAL
-Vídeo não listado (até 3 min): PENDENTE — URL REAL
+REPOSITORIO GITHUB
+https://github.com/Trald1/GS2026-2-EcoPontos-Cidadaos
 
-Contribuições: PENDENTE — descrever as contribuições efetivamente realizadas por cada integrante.
-Confirmação de entendimento técnico / autoria: cada integrante deve revisar e ser capaz de explicar ADRs, testes e limites antes de entregar.
+GITHUB ACTIONS - CI APROVADO
+https://github.com/Trald1/GS2026-2-EcoPontos-Cidadaos/actions/runs/44414328339
+
+VIDEO DEMONSTRATIVO
+https://youtu.be/Da6C9IJzAK0
+
+VALIDACOES
+16 testes automatizados aprovados.
+Ruff: All checks passed.
+OpenAPI: OK.
+GitHub Actions: execucao aprovada.
+
+ARQUITETURA
+Dominio separado da infraestrutura.
+Adaptador de IA substituivel.
+Provedor fake utilizado nos testes.
+
+DECLARACAO
+O projeto utiliza dados ficticios de ecopontos para demonstracao.
+As evidencias de execucao sao reais e estao disponiveis no repositorio.
+O uso de inteligencia artificial esta documentado no arquivo 9_Chat_Log.txt.
+  
